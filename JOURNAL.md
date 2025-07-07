@@ -28,11 +28,11 @@ The Keypad Autolock, now Portcullis (meaning the waffle-like iron gates that his
 
 Prior to starting the project, I made sure to do my research. An HSDRL is a two-stage lock; it must first be pulled outwards and, after, rotated to be unlocked. However, the reason they were so secure - and difficult to unlock/lock with a mechanical design - is that these two axes were not the same. Consider an XYZ space with the Z axis pointing up/down and the XY plane lying flat. The HSDRL must first be pulled linearly along either the X/Y axis (a 'flat' axis) and then be rotated about the Z axis. This makes designing a remote locker/unlocker difficult as there needs to be two parts to the design. This also makes this project highly mechanical.
 
-PICTURE
+![67695ae9-2831-491d-8d26-9c6d92e1358c __CR0,0,970,600_PT0_SX970_V1___](https://github.com/user-attachments/assets/0a5fcd61-4e29-4be8-862f-dba296da0108)
 
 From my prior work, I already had an idea of how it might work, but I wanted to see if there were more effective ways to go about it. I finally settled on the method that made the most sense to me. This was to incorporate a linear actuator to push the lock outwards and then rotating the lock with a servo. Below is the finished CAD design (the research was done beforehand, the diagram is just there to visualize the system better), which illustrates the above explanation. I also realized halfway through designing it that I overcomplicated the design and that the entire linear actuator part could be simplified by having the screw go through the U-shaped part and locking the U-shaped part's ability to rotate. However, I didn't want my work to go to waste, so I decided to continue, which also benefitted me in allowing me to learn more about springs and linear guide rails.
 
-PICTURE
+![Screenshot 2025-07-07 at 4 30 50 PM](https://github.com/user-attachments/assets/a28ab495-f1e5-4a06-bd02-e06de91af335)
 
 **Total time spent: 1h**
 
@@ -45,7 +45,7 @@ Keypad frame and housing:
 - Housing box for the keypad, LCD, and PCB on the other side of the door
 - Includes mounting holes on the housing and a hole for wires to exit the housing and travel under the door and to the Arduino microcontroller
 
-PICTURE
+![Screenshot 2025-07-07 at 4 32 23 PM](https://github.com/user-attachments/assets/dca403ce-5854-4b59-8bca-e5c50b6bc782)
 
 Inside button:
 - Button mounted on the side the lock is on
@@ -62,7 +62,7 @@ Linear actuator:
 - The U-Pusher and the servo housing are connected to a linear guide rail which allows the U-Pusher to slide closer and farther from the servo housing as the screw pulls forward/backward
 - Springs are mounted to the U-Pusher and servo housing to keep the screw and U-Pusher together but not physically connected (implemented for when the screw retracts)
 
-PICTURE
+![Screenshot 2025-07-07 at 4 33 00 PM](https://github.com/user-attachments/assets/407c2db1-8fc6-42ee-89f0-00d818c90d12)
 
 Rotational device:
 - A cap is mounted onto the lock with two prongs extending upwards
@@ -71,7 +71,7 @@ Rotational device:
 - The positional servo then turns the lock ~100° to fully unlock it
 - (The linear actuator then retracts the screw to fix the lock into the unlocked position)
 
-PICTURE
+![Screenshot 2025-07-07 at 4 36 20 PM](https://github.com/user-attachments/assets/84ec5246-2932-4754-910b-601cb0af9950)
 
 Microcontroller housing:
 - A small box houses the microcontroller, where all of the wires feed to
