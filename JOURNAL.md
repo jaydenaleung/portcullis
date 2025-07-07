@@ -39,6 +39,45 @@ PICTURE
 
 # July 1-7: CAD
 
-Then came the bulk of the project - CAD. Since this was a mechanically heavy project, I spent a good amount of time - about a week - on this part.
+Then came the bulk of the project - CAD. Since this was a mechanically heavy project, I spent a good amount of time - about a week - on this part. Below is an in-depth explanation:
 
-**Total time spent: h**
+Keypad frame and housing:
+- Housing box for the keypad, LCD, and PCB on the other side of the door
+- Includes mounting holes on the housing and a hole for wires to exit the housing and travel under the door and to the Arduino microcontroller
+
+PICTURE
+
+Inside button:
+- Button mounted on the side the lock is on
+- User can lock/unlock without needing the password by pressing the button
+
+PICTURE
+
+Linear actuator: 
+- Uses a continuous micro servo attached to a screw
+- The housing for the servo allows it to slide linearly and includes a nut
+- When the screw turns, it interacts with the nut and pulls itself and the servo forward
+- The screw also touches (but is not connected to) the U-Pusher, a U-shaped part which pushes the lock linearly when the servo extends - this is the first step to unlocking the lock
+- The U-Pusher and the servo housing are independent of each other and are not connected
+- The U-Pusher and the servo housing are connected to a linear guide rail which allows the U-Pusher to slide closer and farther from the servo housing as the screw pulls forward/backward
+- Springs are mounted to the U-Pusher and servo housing to keep the screw and U-Pusher together but not physically connected (implemented for when the screw retracts)
+
+PICTURE
+
+Rotational device:
+- A cap is mounted onto the lock with two prongs extending upwards
+- Another cap with one prong extending downward is mounted onto a positional servo and sits just to the side of the cap on the lock
+- When the linear actuator pushes the lock, the prongs on both caps slide into place, next to each other
+- The positional servo then turns the lock ~100° to fully unlock it
+- (The linear actuator then retracts the screw to fix the lock into the unlocked position)
+
+PICTURE
+
+Microcontroller housing:
+- A small box houses the microcontroller, where all of the wires feed to
+- Also houses a battery pack that powers the Arduino
+- It also might house a PCB because there are not enough native ground/5V ports on the Arduino
+
+PICTURE
+
+**Total time spent: 12h**
