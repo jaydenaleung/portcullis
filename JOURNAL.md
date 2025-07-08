@@ -81,3 +81,21 @@ Microcontroller housing:
 PICTURE
 
 **Total time spent: 12h**
+
+
+# July 7: PCB and Wiring
+
+After I finished CADing, I moved onto PCB design. Now, after I finished designing my entire two-part PCB, I realized that it was much too impractical to even install one; in other words, I'd just wasted hours of my time. However, I wouldn't say it was entirely wasted, since I learned some valuable lessons:
+
+One, think before you do! I tried this out when I was in the middle of designing the PCB late at night and realized what I was doing would overcomplicate the design and that there was a much simpler, faster, and more effective way to design my PCB. Two, I gained more experience and practice in PCB design, drawing footprints, etc. I found KiCAD's array feature which helped me to add multiple of the same type of through hole at once, saving me a lot of time and effort. Three, I needed a schematic anyway, and it helped me with my wiring diagram that I ended up making instead.
+
+The PCB was not needed since different parts were on different sides of the door, and besides, even the servos that were on the same side were physically separated. It didn't make sense to have a PCB since I could not effectively mount all the parts. Instead, I would pass the wires under the door and plug them into the Arduino microcontroller, making sure to solder the 5V wires together and to secure the pins so that they wouldn't move.
+
+Here's the schematic that I made:
+![Screenshot 2025-07-07 at 7 24 26 PM](https://github.com/user-attachments/assets/f91a3cd1-3c66-41bb-826c-e10b087587e4)
+
+Here's the PCB that I made (I saved it anyway):
+![Screenshot 2025-07-08 at 2 15 36 PM](https://github.com/user-attachments/assets/fa000475-841b-4df9-b171-33b08540dd2a)
+
+Here's the wiring diagram that I'll be using:
+![unnamed](https://github.com/user-attachments/assets/f15fd83a-2a37-4e81-b933-9770a15415c7)
