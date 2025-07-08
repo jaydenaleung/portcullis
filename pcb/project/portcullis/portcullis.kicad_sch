@@ -2113,7 +2113,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Servo:3-Pin Servo"
 			(at 154.686 60.96 0)
 			(effects
 				(font
@@ -2250,7 +2250,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Servo:3-Pin Servo"
 			(at 97.536 60.96 0)
 			(effects
 				(font
@@ -2454,7 +2454,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Keypad:4x4 16 Button Keypad"
 			(at 119.38 38.1 0)
 			(effects
 				(font

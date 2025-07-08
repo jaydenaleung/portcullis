@@ -1,0 +1,1 @@
+There is no required PCB for this project because of the unique positioning of the electronic components. Since the components are on different sides of the doors and the parts are not positioned so that they can be mounted onto the PCB anyways, a PCB is not necessary. The PCB was included for your reference and also because I did not realize this until I had made the whole PCB.
