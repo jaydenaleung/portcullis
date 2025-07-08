@@ -1,0 +1,1 @@
+Inside the symbol library for the Servo, look for the "Motor_Servo" symbol. This is the one used.

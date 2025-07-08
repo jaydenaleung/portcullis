@@ -1,0 +1,9 @@
+.DS_Store
+
+.lck
+
+**/fp-info-cache
+
+portcullis-backups/
+
+**/#auto_saved_files#

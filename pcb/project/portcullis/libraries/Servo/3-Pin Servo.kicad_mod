@@ -1,0 +1,105 @@
+(footprint "3-Pin Servo"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1.2 -4.4 90)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "3adfc9cf-adbd-4813-82bb-6b97d4eb929f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "3-Pin Servo"
+		(at 6.6 -1.2 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "ff86a089-8dd6-49d3-8686-c5103feb060a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e993e8e1-342f-4b53-9dac-10232aef8c5f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "777a60d5-1160-40de-8f42-fb978e196445")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start 0 -7.2)
+		(end 13.2 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "cd3496bc-8d45-49a5-9284-d36d29c2ff7a")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 7.4 -6 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "67e36c8c-9be2-493e-a288-88d624f5385d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 4.06 -3.6)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a9530612-4912-4efd-bbf6-f82c103b2f69")
+	)
+	(pad "2" thru_hole circle
+		(at 6.6 -3.6)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7421d102-b045-471a-aaa4-d54d7013c7a9")
+	)
+	(pad "3" thru_hole circle
+		(at 9.14 -3.6)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "364189fe-8472-46ff-863b-b291b7389bcf")
+	)
+	(embedded_fonts no)
+)
