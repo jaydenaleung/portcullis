@@ -99,3 +99,5 @@ Here's the PCB that I made (I saved it anyway):
 
 Here's the wiring diagram that I'll be using:
 ![unnamed](https://github.com/user-attachments/assets/f15fd83a-2a37-4e81-b933-9770a15415c7)
+
+**Total time spent: 4h**
