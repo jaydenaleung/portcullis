@@ -1,0 +1,156 @@
+// include libraries
+#include <Servo.h>
+#include <Keypad.h>
+#include <LiquidCrystal_I2C.h>
+
+// init servos
+Servo linear; // continuous linear servo
+Servo rot; // positional rotational servo
+
+// init LCD
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+lcd.init();
+lcd.backlight();
+lcd.cursor(0,0);
+
+// setup keypad
+const byte ROWS = 4; // Four rows
+const byte COLS = 4; // Four columns
+
+char keys[ROWS][COLS] = {
+{'1', '2', '3', 'A'},
+{'4', '5', '6', 'B'},
+{'7', '8', '9', 'C'},
+{'*', '0', '#', 'D'}
+};
+
+byte rowPins[ROWS] = {9, 8, 7, 6}; // Connect to row pins
+byte colPins[COLS] = {5, 4, 3, 2}; // Connect to column pins
+
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+String PIN = "0000"; // SET YOUR PIN HERE
+String attemptPIN = "";
+bool lockedState = true;
+
+// define pins
+int linearPin = ;
+int rotPin = ;
+
+double msPerRev = ;
+
+void setup() {
+  Serial.begin(9600);
+  
+  linear.attach(linearPin);
+  linear.write(90);
+  rot.attach(rotPin);
+  rot.write(180); // starting position to mount onto the lock
+
+  enterPIN(); // set LCD screen to home
+}
+
+void loop() {
+  char key = keypad.getKey(); // detect key press and save the key
+  if (key) { // keypad logic
+    if (key == '*') { // clear attempt
+      attemptPIN = "";
+      updatePIN();
+    } else if (key == '#') { // enter
+      if (attemptPIN == PIN) {
+        accessGranted(); // update LCD
+        (lockedState == true) ? unlock(); : lock();
+        enterPIN(); // return LCD screen to home
+      } else {
+        accessDenied();
+      }
+      attemptPIN = "";
+      updatePIN();
+    } else { // add key pressed to the attempt
+      if (attemptPIN.length() <= 4) { // only if the attempt isn't 4 digits yet
+        String num = String(key);
+        attemptPIN += num;
+        updatePIN();
+      }
+    }
+  }
+}
+
+
+// LCD
+void enterPIN() {
+  lcd.clear();
+  lcd.cursor(0,0);
+  lcd.write("Welcome, JAYDEN");
+  lcd.cursor(0,1);
+  lcd.write("____");
+}
+
+void updatePIN() {
+  lcd.cursor(0,1);
+  if (attemptPIN.length() > 0) { lcd.write(attemptPIN); }
+  if (attemptPIN.length() < 4) {
+    lcd.cursor(attemptPIN.length(),1);
+    String underscores = "";
+    for (int i = 0; i < (4-attemptPIN.length()); i++) {
+      underscores += "_";
+    }
+    lcd.write(underscores);
+  }
+}
+
+void accessGranted() {
+  lcd.clear();
+  lcd.cursor(0,0);
+  lcd.write("ACCESS GRANTED")
+  lcd.cursor(0,1);
+  if (lockedState == true) {
+    lcd.write("Unlocking...");
+  } else {
+    lcd.write("Locking...");
+  }
+}
+
+void accessDenied() {
+  lcd.clear();
+  lcd.cursor(0,0);
+  lcd.write("ACCESS DENIED");
+  lcd.cursor(0,1);
+  lcd.write("Incorrect PIN.")
+  delay(3000); // wait 3s
+  enterPIN(); // return LCD to home screen
+}
+
+
+// Servo control
+void push() { // continuous linear servo
+  linear.write(45); // counterclockwise
+  delay(msPerRev*2.25); // push 4.5mm, 2mm per rev on screw
+}
+
+void pull() { // continuous linear servo
+  linear.write(135); // clockwise
+  delay(msPerRev*2.25); // pull 4.5mm, 2mm per rev on screw
+}
+
+void turnUnlock() {
+  rot.write(0);
+  delay(500); // speed of rotation
+}
+
+void turnLock() {
+  rot.write(180);
+  delay(1000); // slower for more torque to push the lock against the door firmly
+}
+
+void unlock() {
+  push();
+  turnUnlock();
+  pull();
+}
+
+void lock() {
+  push();
+  turnLock();
+  pull();
+}
