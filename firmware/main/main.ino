@@ -24,8 +24,8 @@ char keys[ROWS][COLS] = {
 {'*', '0', '#', 'D'}
 };
 
-byte rowPins[ROWS] = {9, 8, 7, 6}; // Connect to row pins
-byte colPins[COLS] = {5, 4, 3, 2}; // Connect to column pins
+byte rowPins[ROWS] = {6, 7, 8, 9}; // Connect to row pins in format {R1, R2, R3, R4}
+byte colPins[COLS] = {2, 3, 4, 5}; // Connect to column pins in format {C1, C2, C3, C4}
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
@@ -34,10 +34,17 @@ String attemptPIN = "";
 bool lockedState = true;
 
 // define pins
-int linearPin = ;
-int rotPin = ;
+int linearPin = 11;
+int rotPin = 10;
 
-double msPerRev = ;
+int ledPin = 12;
+int buttonPin = 13; // button on the inside of the door
+
+// variables, consts, and other states
+bool lastButton = HIGH; // INPUT_PULLUP is default HIGH
+bool actionDone = false; 
+
+double msPerRev = 461.538461; // DETERMINED EMPIRICALLY
 
 void setup() {
   Serial.begin(9600);
@@ -46,6 +53,9 @@ void setup() {
   linear.write(90);
   rot.attach(rotPin);
   rot.write(180); // starting position to mount onto the lock
+
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
 
   enterPIN(); // set LCD screen to home
 }
@@ -59,6 +69,7 @@ void loop() {
     } else if (key == '#') { // enter
       if (attemptPIN == PIN) {
         accessGranted(); // update LCD
+        updateLED();
         (lockedState == true) ? unlock(); : lock();
         enterPIN(); // return LCD screen to home
       } else {
@@ -73,6 +84,28 @@ void loop() {
         updatePIN();
       }
     }
+  }
+  
+  bool currentButton = digitalRead(buttonPin);
+
+  if (currentButton == LOW && lastButton == HIGH && !actionDone) { // runs  once when pressed
+    updateLED();
+    (lockedState == true) ? unlock(); : lock(); // do the action
+    actionDone = true; // ensure that this code runs only once when pressed
+  }
+  if (currentButton == HIGH) {
+    actionDone = false; // reset actionDone upon release of button
+  }
+  
+  lastButton = currentButton; // update lastButton  
+}
+
+// LED
+void updateLED() {
+  if (lockedState == true) { // LED logic
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
   }
 }
 
@@ -125,12 +158,12 @@ void accessDenied() {
 // Servo control
 void push() { // continuous linear servo
   linear.write(45); // counterclockwise
-  delay(msPerRev*2.25); // push 4.5mm, 2mm per rev on screw
+  delay(int(msPerRev*2.25)); // push 4.5mm, 2mm per rev on screw
 }
 
 void pull() { // continuous linear servo
   linear.write(135); // clockwise
-  delay(msPerRev*2.25); // pull 4.5mm, 2mm per rev on screw
+  delay(int(msPerRev*2.25)); // pull 4.5mm, 2mm per rev on screw
 }
 
 void turnUnlock() {

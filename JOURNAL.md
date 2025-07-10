@@ -92,7 +92,7 @@ One, think before you do! I tried this out when I was in the middle of designing
 The PCB was not needed since different parts were on different sides of the door, and besides, even the servos that were on the same side were physically separated. It didn't make sense to have a PCB since I could not effectively mount all the parts. Instead, I would pass the wires under the door and plug them into the Arduino microcontroller, making sure to solder the 5V wires together and to secure the pins so that they wouldn't move.
 
 Here's the schematic that I made:
-![Screenshot 2025-07-07 at 7 24 26 PM](https://github.com/user-attachments/assets/f91a3cd1-3c66-41bb-826c-e10b087587e4)
+PICTURE
 
 Here's the PCB that I made (I saved it anyway):
 ![Screenshot 2025-07-08 at 2 15 36 PM](https://github.com/user-attachments/assets/fa000475-841b-4df9-b171-33b08540dd2a)
@@ -101,3 +101,27 @@ Here's the wiring diagram that I'll be using:
 ![unnamed](https://github.com/user-attachments/assets/f15fd83a-2a37-4e81-b933-9770a15415c7)
 
 **Total time spent: 4h**
+
+
+# July 8: Additional CAD
+
+Usually, this would be the step where I would make changes to my CAD design to incorporate the PCB I just created. However, since a PCB wasn't needed for this project, I instead took this time to create a housing for my microcontroller, which also included a button I forgot to account for earlier. This button would also lock and unlock the door without needing a password (since it would be behind the door).
+
+PICTURE
+
+As you can see, I got a bit carried away in designing the case. I found a text FeatureScript in Onshape (a program that allowed me to add text into my CAD model), which would have been really helpful for my other hackpad project (I spent about an hour writing the text by hand using lines and curves). After that, I decided to make the case look like a real, medival portcullis, and I also wanted to include the button in the middle. It was nice to learn how to incorporate aesthetics in my CAD designs, though!
+
+Additionally, I fixed up a few minor details with the servo housing and its cover. I also moved the hole in the keypad housing for the wires to pass out of to the bottom so I could attach my wire cover directly to the case.
+
+**Total time spent: 5h**
+
+
+# July 9-10: Firmware Coding
+
+For the final piece of designing this project, I coded the firmware. It consisted of a few different parts: controlling the servos and the locking mechanism, the keypad logic to decide when to unlock or lock it, and updating the UI on the LCD. Coding the mechanical control of the servos wasn't too difficult except that I needed to get the angular speed of my continuous servo empirically, and I did not have the tools to do that at the moment. Instead, I went with 130 RPM, which is what the internet said was its max speed.
+
+After that, I coded the keypad logic, which surprisingly was not as difficult as I imagined. Many conditionals, yes, but nothing too complicated. '*' meant clear the PIN, '#' meant enter, and everything else - including letters A-D and numbers 0-9 - was fair game for the PIN. However, the code began to get messy after I added in LCD text and LED light logic on top of that. But a few void-type functions for organization easily cleaned it up.
+
+I thought I was finished, but it turned out that I had forgotten to include code for the LED light-up button on the inside of the door that allowed me to unlock and lock it without a passcode. It took me a few tries and some help from ChatGPT before I could get edge detection down, but I finally finished the program in 189 lines.
+
+**Total time spent 4h**
