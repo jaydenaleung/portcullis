@@ -6,13 +6,14 @@ created_at: "2025-07-01"
 ---
 
 # Time Spent
-- **Total hours: h**
-- **Total days: days**
-- **Time spent on CAD: h**
-- **Time spent on PCB design: h**
-- **Time spent on coding: h**
+- **Total hours excluding prior work: 30h**
+- **Total days excluding prior work: 10 days**
+- **Total days in prior work: ~3 days**
+- **Time spent on CAD: 17h**
+- **Time spent on PCB design: 4h**
+- **Time spent on coding: 4h**
 - **Time spent on physical assembly: (not yet completed)**
-- **Time spent on sourcing parts, writing journal and readme, etc.: h**
+- **Time spent on sourcing parts, writing journal and readme, etc.: 4h**
 
 
 # Prior Work
@@ -47,12 +48,6 @@ Keypad frame and housing:
 
 ![Screenshot 2025-07-07 at 4 32 23 PM](https://github.com/user-attachments/assets/dca403ce-5854-4b59-8bca-e5c50b6bc782)
 
-Inside button:
-- Button mounted on the side the lock is on
-- User can lock/unlock without needing the password by pressing the button
-
-PICTURE
-
 Linear actuator: 
 - Uses a continuous micro servo attached to a screw
 - The housing for the servo allows it to slide linearly and includes a nut
@@ -73,13 +68,6 @@ Rotational device:
 
 ![Screenshot 2025-07-07 at 4 36 20 PM](https://github.com/user-attachments/assets/84ec5246-2932-4754-910b-601cb0af9950)
 
-Microcontroller housing:
-- A small box houses the microcontroller, where all of the wires feed to
-- Also houses a battery pack that powers the Arduino
-- It also might house a PCB because there are not enough native ground/5V ports on the Arduino
-
-PICTURE
-
 **Total time spent: 12h**
 
 
@@ -92,7 +80,7 @@ One, think before you do! I tried this out when I was in the middle of designing
 The PCB was not needed since different parts were on different sides of the door, and besides, even the servos that were on the same side were physically separated. It didn't make sense to have a PCB since I could not effectively mount all the parts. Instead, I would pass the wires under the door and plug them into the Arduino microcontroller, making sure to solder the 5V wires together and to secure the pins so that they wouldn't move.
 
 Here's the schematic that I made:
-PICTURE
+<img width="1238" height="1032" alt="Screenshot 2025-07-10 165348" src="https://github.com/user-attachments/assets/8b451c62-b586-4764-9998-9d56cd25a944" />
 
 Here's the PCB that I made (I saved it anyway):
 ![Screenshot 2025-07-08 at 2 15 36 PM](https://github.com/user-attachments/assets/fa000475-841b-4df9-b171-33b08540dd2a)
@@ -107,7 +95,9 @@ Here's the wiring diagram that I'll be using:
 
 Usually, this would be the step where I would make changes to my CAD design to incorporate the PCB I just created. However, since a PCB wasn't needed for this project, I instead took this time to create a housing for my microcontroller, which also included a button I forgot to account for earlier. This button would also lock and unlock the door without needing a password (since it would be behind the door).
 
-PICTURE
+<img width="1302" height="779" alt="Screenshot 2025-07-10 182612" src="https://github.com/user-attachments/assets/f22714da-99bf-49d8-a36a-87da4a48bae3" />
+<img width="1465" height="916" alt="Screenshot 2025-07-10 182758" src="https://github.com/user-attachments/assets/bc50f499-247e-45aa-b2f0-7ad28ad86628" />
+<img width="1238" height="483" alt="Screenshot 2025-07-10 182809" src="https://github.com/user-attachments/assets/efa283b0-38ef-45d8-950e-34027e4b84dd" />
 
 As you can see, I got a bit carried away in designing the case. I found a text FeatureScript in Onshape (a program that allowed me to add text into my CAD model), which would have been really helpful for my other hackpad project (I spent about an hour writing the text by hand using lines and curves). After that, I decided to make the case look like a real, medival portcullis, and I also wanted to include the button in the middle. It was nice to learn how to incorporate aesthetics in my CAD designs, though!
 
@@ -123,5 +113,7 @@ For the final piece of designing this project, I coded the firmware. It consiste
 After that, I coded the keypad logic, which surprisingly was not as difficult as I imagined. Many conditionals, yes, but nothing too complicated. '*' meant clear the PIN, '#' meant enter, and everything else - including letters A-D and numbers 0-9 - was fair game for the PIN. However, the code began to get messy after I added in LCD text and LED light logic on top of that. But a few void-type functions for organization easily cleaned it up.
 
 I thought I was finished, but it turned out that I had forgotten to include code for the LED light-up button on the inside of the door that allowed me to unlock and lock it without a passcode. It took me a few tries and some help from ChatGPT before I could get edge detection down, but I finally finished the program in 189 lines.
+
+<img width="2255" height="1268" alt="Screenshot 2025-07-10 173544" src="https://github.com/user-attachments/assets/10d201a1-6175-44c5-a64a-e84903679024" />
 
 **Total time spent 4h**
