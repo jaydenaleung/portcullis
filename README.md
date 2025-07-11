@@ -5,17 +5,14 @@ A portcullis originally guarded a castle's entrance, known for its waffle-like i
 
 Portcullis is an automated system that mechanically unlocks home security door reinforcement locks (HSDRLs), with access protected by a passcode using a keypad. HSDRLs act as boltlocks when mounted onto the doorframe next to the door being locked. See below for more information.
 
-PICTURE1
-PICTURE2
+<img height="450" src="https://github.com/user-attachments/assets/94c1541d-03f8-46f5-a136-9490aab7b6f0" />
+<img height="450" src="https://github.com/user-attachments/assets/3ccbe4f9-8308-4504-a4ca-c6801535a208" />
 
 *The large block in the picture represents the wall that HSDRLs are mounted onto.*
 
-PICTURE
+<img height="900" alt="image" src="https://github.com/user-attachments/assets/8ac93096-7205-4f41-b9af-5183600e3394" />
 
-*A medival portcullis.*
-
-<img src="" height="450"
-<img src="" height="450"
+*A medival portcullis. Credit: [https://www.dreamstime.com/stock-images-castle-portcullis-image7831724](url).*
 
 
 # Figures
@@ -43,7 +40,7 @@ Portcullis
 
 This specific mechanism works to solve this issue in three steps: one, using a linear actuator to push the HSDRL forward enough that it can be rotated. Two, rotate it to unlock or lock the door. Three, retract the linear actuator to lock the HSDRL in place. This is all controlled by an Arduino Uno R3 microcontroller, which connects to a continuous servo powering the linear actuator and a positional servo rotating the mechanism. Additionally, the locking/unlocking process is initiated by either entering the correct passcode on a keypad on the side of the door opposite the lock or by pressing a button (passcode not required) on the same side of the door as the lock.
 
-TOPDOWN VIEW OF MECHANISM
+<img height="450" src="https://github.com/user-attachments/assets/74bca56b-3ee4-4c82-a2ab-89780d6016b5" />
 
 Additional Features
 -
@@ -54,7 +51,16 @@ Additional Features
 - Aesthetic microcontroller housing with LED lights on button
 - Linear guide rails and tension springs for the linear actuator
 
-PICTURE
+Wiring Diagram
+-
+
+This project does not utilize a PCB because of the sparse placement of the connected parts. See this wiring diagram instead:
+
+<img height="450" height="808" alt="image" src="https://github.com/user-attachments/assets/8e79eb41-f8b1-4f4b-ad0f-cb0adfbaf6f3" />
+
+And this schematic:
+
+<img height="450" alt="Screenshot 2025-07-10 165348" src="https://github.com/user-attachments/assets/61bf09af-021a-457f-b31a-9fe14c36c892" />
 
 
 # The 'Why' Behind the Project
