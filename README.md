@@ -98,6 +98,6 @@ With the three-part unlocking/locking system mentioned earlier, this is a mechan
 | 1 | Home security door reinforcement lock | N/A | https://a.co/d/iCTK5DP | Already have this (no price). |
 | 1 | 330Ω resistor | N/A | N/A | Already have this (no price). |
 
-| **Total minimum cost** | $43 |
+| **Total minimum cost** | $43.41 |
 | --------------------------------------------------- | ---- |
 | **Total including shipping; sales tax (assumed ~6%); import and customs fees; etc.** | ~$75 |
