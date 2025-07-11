@@ -33,7 +33,7 @@ How do HSDRLs work?
 
 HSDRLs lock a door by acting as a fixed stopper. In combination with this, their tough metal material allows it to be one of the strongest, safest, and most secure locks on the market. After turning them to their locked position, they will 'click' into place, effectively fixing itself against the door. Mechanically, this means that when the door pushes against it, its rigid position will hold the door back. See the picture below for how unlocking and locking an HSDRL works.
 
-PICTURE
+<img width="970" height="600" alt="image" src="https://github.com/user-attachments/assets/bee13a8f-eea3-468e-8899-a6939ffd84c9" />
 
 Portcullis
 -
