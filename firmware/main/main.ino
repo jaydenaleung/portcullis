@@ -121,12 +121,20 @@ void enterPIN() {
 
 void updatePIN() {
   lcd.cursor(0,1);
-  if (attemptPIN.length() > 0) { lcd.write(attemptPIN); }
+
+  if (attemptPIN.length() > 0) { // hide the PIN that is typed in with stars
+    String stars = "";
+    for (int i = 0; i < (attemptPIN.length(); i++) {
+      stars += "*";
+    }
+    lcd.write(stars);
+  }
+
   if (attemptPIN.length() < 4) {
-    lcd.cursor(attemptPIN.length(),1);
+    lcd.cursor(attemptPIN.length(),1); // position the cursor after the last star
     String underscores = "";
-    for (int i = 0; i < (4-attemptPIN.length()); i++) {
-      underscores += "_";
+    for (int j = 0; j < (4-attemptPIN.length()); j++) {
+      underscores += "_"; // write underscores for any place where there is not a star within the 4-character PIN range
     }
     lcd.write(underscores);
   }
