@@ -9,9 +9,6 @@ Servo rot; // positional rotational servo
 
 // init LCD
 LiquidCrystal_I2C lcd(0x27, 16, 2);
-lcd.init();
-lcd.backlight();
-lcd.cursor(0,0);
 
 // setup keypad
 const byte ROWS = 4; // Four rows
@@ -44,10 +41,14 @@ int buttonPin = 13; // button on the inside of the door
 bool lastButton = HIGH; // INPUT_PULLUP is default HIGH
 bool actionDone = false; 
 
-double msPerRev = 461.538461; // DETERMINED EMPIRICALLY
+double msPerPush = 4000.0; // DETERMINED EMPIRICALLY
 
 void setup() {
   Serial.begin(9600);
+  
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0,0);
   
   linear.attach(linearPin);
   linear.write(90);
@@ -70,7 +71,7 @@ void loop() {
       if (attemptPIN == PIN) {
         accessGranted(); // update LCD
         updateLED();
-        (lockedState == true) ? unlock(); : lock();
+        (lockedState == true) ? unlock() : lock();
         enterPIN(); // return LCD screen to home
       } else {
         accessDenied();
@@ -90,7 +91,7 @@ void loop() {
 
   if (currentButton == LOW && lastButton == HIGH && !actionDone) { // runs  once when pressed
     updateLED();
-    (lockedState == true) ? unlock(); : lock(); // do the action
+    (lockedState == true) ? unlock() : lock(); // do the action
     actionDone = true; // ensure that this code runs only once when pressed
   }
   if (currentButton == HIGH) {
@@ -113,51 +114,51 @@ void updateLED() {
 // LCD
 void enterPIN() {
   lcd.clear();
-  lcd.cursor(0,0);
-  lcd.write("Welcome, JAYDEN");
-  lcd.cursor(0,1);
-  lcd.write("____");
+  lcd.setCursor(0,0);
+  lcd.print("Welcome, JAYDEN");
+  lcd.setCursor(0,1);
+  lcd.print("____");
 }
 
 void updatePIN() {
-  lcd.cursor(0,1);
+  lcd.setCursor(0,1);
 
   if (attemptPIN.length() > 0) { // hide the PIN that is typed in with stars
     String stars = "";
-    for (int i = 0; i < (attemptPIN.length(); i++) {
+    for (int i = 0; i < attemptPIN.length(); i++) {
       stars += "*";
     }
-    lcd.write(stars);
+    lcd.print(stars);
   }
 
   if (attemptPIN.length() < 4) {
-    lcd.cursor(attemptPIN.length(),1); // position the cursor after the last star
+    lcd.setCursor(attemptPIN.length(),1); // position the cursor after the last star
     String underscores = "";
     for (int j = 0; j < (4-attemptPIN.length()); j++) {
       underscores += "_"; // write underscores for any place where there is not a star within the 4-character PIN range
     }
-    lcd.write(underscores);
+    lcd.print(underscores);
   }
 }
 
 void accessGranted() {
   lcd.clear();
-  lcd.cursor(0,0);
-  lcd.write("ACCESS GRANTED")
-  lcd.cursor(0,1);
+  lcd.setCursor(0,0);
+  lcd.print("ACCESS GRANTED");
+  lcd.setCursor(0,1);
   if (lockedState == true) {
-    lcd.write("Unlocking...");
+    lcd.print("Unlocking...");
   } else {
-    lcd.write("Locking...");
+    lcd.print("Locking...");
   }
 }
 
 void accessDenied() {
   lcd.clear();
-  lcd.cursor(0,0);
-  lcd.write("ACCESS DENIED");
-  lcd.cursor(0,1);
-  lcd.write("Incorrect PIN.")
+  lcd.setCursor(0,0);
+  lcd.print("ACCESS DENIED");
+  lcd.setCursor(0,1);
+  lcd.print("Incorrect PIN.");
   delay(3000); // wait 3s
   enterPIN(); // return LCD to home screen
 }
@@ -165,23 +166,24 @@ void accessDenied() {
 
 // Servo control
 void push() { // continuous linear servo
-  linear.write(45); // counterclockwise
-  delay(int(msPerRev*2.25)); // push 4.5mm, 2mm per rev on screw
+  linear.write(180); // push outwards
+  delay(int(msPerPush));
+  linear.write(90); // then stop pushing
 }
 
 void pull() { // continuous linear servo
-  linear.write(135); // clockwise
-  delay(int(msPerRev*2.25)); // pull 4.5mm, 2mm per rev on screw
+  linear.write(0); // pull inwards
+  delay(int(msPerPush));
+  linear.write(90);
 }
 
 void turnUnlock() {
   rot.write(0);
-  delay(500); // speed of rotation
-}
+  delay(500); // wait for it to rotate
 
 void turnLock() {
-  rot.write(180);
-  delay(1000); // slower for more torque to push the lock against the door firmly
+  rot.write(180); // 90 deg is the angle to turn to the locked position, but 180 deg is used to push more firmly against the door
+  delay(500); // wait for it to rotate
 }
 
 void unlock() {
@@ -194,4 +196,5 @@ void lock() {
   push();
   turnLock();
   pull();
+  rot.write(90); // return it to the desired position after allowing it to push firmly against the door
 }
