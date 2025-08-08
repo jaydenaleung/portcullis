@@ -130,6 +130,10 @@ A huge package of all my materials came today (July 27), and since I previously 
 
 Mechanically, the linear actuator worked well (except that the nut was falling off at the end), but the rotational actuator was a bit more of a pain. I reprinted it to be bigger, which helped to solve the problem.
 
+![IMG_4029](https://github.com/user-attachments/assets/0a3df60a-5d70-42c1-8b81-7869320d0428)
+
+![IMG_4031](https://github.com/user-attachments/assets/7dd1c86b-4c7e-4acb-b2bc-8461ebc4c196)
+
 
 # July 27-August 1 - Putting It All Together, Electrically
 
@@ -147,6 +151,24 @@ I spent a lot of time debugging, sometimes for the littlest things. *Don't overl
 
 After that, I said I'd never become an electrical engineer (but computer engineer!). But now, I see that it might be kind of fun.
 
+![IMG_4025](https://github.com/user-attachments/assets/045a963d-9b24-4d7a-a1c0-958c6119ad6a)
+ |
+ |
+ V
+![IMG_4026](https://github.com/user-attachments/assets/3dfef77a-f32f-45d4-a399-a5bcc8b02ae8)
+ |
+ |
+ V
+ ![IMG_4027](https://github.com/user-attachments/assets/ae12d221-caaf-4941-bcd8-75f777b0e83d)
+ |
+ |
+ V
+![IMG_4034](https://github.com/user-attachments/assets/f4890715-b13f-4b9e-b91d-8ed9206aa148)
+ |
+ |
+ V
+ ![IMG_4048](https://github.com/user-attachments/assets/a9bb3656-b7a7-4684-9106-48e33d905627)
+
 
 # July 27-August 1 - Putting It All Together, In The Code
 
@@ -157,9 +179,10 @@ I didn't initially use the code that I had previously designed since it was too 
 
 After many, many tries, I finally finished it before I had to go off on a trip (where I couldn't access it) by pulling an epic all-nighter. Recording the setup, I turned on my power bank, waited for the setup to activate... the linear actuator pulled the servo forward, pushing the the boltlock... the tab on the servo slid into place with the boltlock... the rotational servo turned, and... it unlocked!!! I was so happy after spending basically the past 21 hours on it (which was just that day). For something that was supposed to be so simple, it took a long time. But I learned many lessons along the way, and that's what counts. Enjoy the video of it below!
 
-Video: 
+![IMG_4044](https://github.com/user-attachments/assets/9dd75cd2-1fa2-43f6-8272-a83f4c29fd97)
 
-Full Demo: 
+
+Full Demo: [https://youtu.be/WndzgAl9owI](url)
 
 
 P.S. It was meant to keep others out of my room, but the fragile setup seems to keep me more out of my room instead... maybe I'll improve it later!
