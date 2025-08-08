@@ -6,14 +6,14 @@ created_at: "2025-07-01"
 ---
 
 # Time Spent
-- **Total hours excluding prior work: 30h**
-- **Total days excluding prior work: 10 days**
+- **Total hours excluding prior work: 92h**
+- **Total days excluding prior work: 16 days**
 - **Total days in prior work: ~3 days**
 - **Time spent on CAD: 17h**
 - **Time spent on PCB design: 4h**
 - **Time spent on coding: 4h**
-- **Time spent on physical assembly: (not yet completed)**
-- **Time spent on sourcing parts, writing journal and readme, etc.: 4h**
+- **Time spent on physical assembly: 62h**
+- **Time spent on sourcing parts, writing journal and readme, etc.: 5h**
 
 
 # Prior Work
@@ -116,4 +116,54 @@ I thought I was finished, but it turned out that I had forgotten to include code
 
 <img width="2255" height="1268" alt="Screenshot 2025-07-10 173544" src="https://github.com/user-attachments/assets/10d201a1-6175-44c5-a64a-e84903679024" />
 
-**Total time spent 4h**
+**Total time spent: 4h**
+
+
+# July 27-August 1 - Putting It All Together, Mechanically
+
+A huge package of all my materials came today (July 27), and since I previously had used my 3D printer to print all of the parts, I began putting it together. Here are some issues I encountered:
+
+- The nut and screw I 3D printed didn't mate well, so I had to use a similar nut that I prototyped with before (that did work). I hot glued it onto the linear (continuous) servo housing. I also had to modify the housing a bit to fit the servo better.
+- The hooks I made for the springs were way too thin, so I reprinted the housing with thicker hooks. This allowed me to put 4 springs on each of the two hooks, which provided excellent tension as the linear guide rails were a little rough.
+- The linear guide rails were really greasy when they arrived, probably really coated in WD40 or another lubricant. I wiped them down with a tissue.
+- The screws fit well with the 3D printed parts, **BUT HERE'S A BIG LESSON I LEARNED: 3D printed hole sizes can be smaller than it is in CAD!** Especially since I didn't have a really high quality Bambu or similar. I ended up having to scrape out some of the plastic in the hole to make it bigger and use a smaller screw.
+
+Mechanically, the linear actuator worked well (except that the nut was falling off at the end), but the rotational actuator was a bit more of a pain. I reprinted it to be bigger, which helped to solve the problem.
+
+
+# July 27-August 1 - Putting It All Together, Electrically
+
+Ok, this was a **HUGE** pain. I literally spent two to three hours trying to figure out why my LCD module wasn't working, only to realize that the two LED jumper pins weren't connected. The biggest lesson I learned from this was probably about part sourcing and electronics in general.
+
+**1. Never buy from Aliexpress, but always buy from Aliexpress.**
+
+Wait, what? What I really mean is that the quality in Aliexpress is a lot lower than in Amazon or in-store, but they can have much cheaper prices. The best combination is to buy from an Aliexpress vendor that doesn't look sketchy (not the "Shop12312093712" vendor I purchased from), has at least 100-500+ of that item sold, has really good reviews, and has been operating for a 3-5 years minimum. 
+
+*Better to have a slightly higher price than to have to buy a whole new one to replace it.* Low prices can be enticing - I can say that firsthandedly - but know they come at a cost. For example, I bought my keypad from a random seller on Amazon, and I didn't take the time to background-check their reputation before ordering it. I easily blew a trace on that keypad while soldering, rendering the entire thing useless.
+
+**2. Expect to spend a lot of time on each electronic component. As a general rule of thumb, think of a reasonable time it would take and triple it. That's the time you need**
+
+I spent a lot of time debugging, sometimes for the littlest things. *Don't overlook the smallest things! Double check your wiring!* Commonly used parts such as servos and buttons usually work, but remember to buy from a reputable seller. Sometimes the module is just broken or doesn't use the chip it says it uses to reduce manufacturing costs. It took me a long time to finally realize that I blew my keypad, and I couldn't use it (I couldn't get a replacement since I was leaving the next day, but I still mounted the broken keypad for the looks).
+
+After that, I said I'd never become an electrical engineer (but computer engineer!). But now, I see that it might be kind of fun.
+
+
+# July 27-August 1 - Putting It All Together, In The Code
+
+I didn't initially use the code that I had previously designed since it was too fleshed out. Instead, I tested each part individually using example code. Surprisingly, at the end, my full code worked perfectly. It was kind of funny that the electrical part was the toughest, but the software somehow worked fine. Likely because I was using pretty simple and common parts for my build (servos, LCD modules, etc.).
+
+
+# July 27-August 1 - Putting It All Together, Finally
+
+After many, many tries, I finally finished it before I had to go off on a trip (where I couldn't access it) by pulling an epic all-nighter. Recording the setup, I turned on my power bank, waited for the setup to activate... the linear actuator pulled the servo forward, pushing the the boltlock... the tab on the servo slid into place with the boltlock... the rotational servo turned, and... it unlocked!!! I was so happy after spending basically the past 21 hours on it (which was just that day). For something that was supposed to be so simple, it took a long time. But I learned many lessons along the way, and that's what counts. Enjoy the video of it below!
+
+Video: 
+
+Full Demo: 
+
+
+P.S. It was meant to keep others out of my room, but the fragile setup seems to keep me more out of my room instead... maybe I'll improve it later!
+
+**Total time spent (for the entire physical assembly): 62h**
+
+*Note: This took a long time, but the time to build electronics projects should decrease as I gain more experience. This was my first ever fully built-and-finished project!*
