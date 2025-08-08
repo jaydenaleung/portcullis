@@ -5,6 +5,10 @@ A portcullis originally guarded a castle's entrance, known for its waffle-like i
 
 Portcullis is an automated system that mechanically unlocks home security door reinforcement locks (HSDRLs), with access protected by a passcode using a keypad. HSDRLs act as boltlocks when mounted onto the doorframe next to the door being locked. See below for more information.
 
+VIDEO DEMO: [https://youtu.be/WndzgAl9owI](url)
+
+<img height="450" alt="image" src="https://github.com/user-attachments/assets/cbb3c8de-6a6a-4a6a-a30f-c7a699e39c93" />
+![IMG_4044](https://github.com/user-attachments/assets/133aae97-bc05-4c25-9dea-f861c621a5ba)
 <img height="450" src="https://github.com/user-attachments/assets/94c1541d-03f8-46f5-a136-9490aab7b6f0" />
 <img height="450" src="https://github.com/user-attachments/assets/3ccbe4f9-8308-4504-a4ca-c6801535a208" />
 
