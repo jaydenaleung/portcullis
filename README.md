@@ -23,9 +23,9 @@ VIDEO DEMO: [https://youtu.be/WndzgAl9owI](url)
 
 **Total Minimum Cost:** $43 USD
 
-**Total Hours Spent:** 30 hrs
+**Total Hours Spent:** 92 hrs
 
-**Total Days Spent:** 10 days
+**Total Days Spent:** 16 days
 
 *See JOURNAL.md and the BOM below for an in-depth explanation of these numbers.*
 
